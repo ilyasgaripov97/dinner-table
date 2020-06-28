@@ -21,18 +21,27 @@ function keyupEventListener(section) {
     })
 }
 
+function increaseProductAmount(e, input) {
+    if (e.target.className === 'increase') {
+        ++input.value;
+    }
+}
+
+function decreaseProductAmount(e, input) {
+    if (e.target.className === 'decrease'  && input.value > 0) {
+        --input.value;
+    }
+}
+
+
 function buttonClickEventListener(section) {
     section.addEventListener('click', e => {
         const input = section.querySelector('input');
 
-        if (e.target.className === 'increase') {
-            ++input.value;
-            updateProductsAmounts(input);
-        }
-        if (e.target.className === 'decrease') {
-            --input.value;
-            updateProductsAmounts(input);
-        }
+        increaseProductAmount(e, input);
+        decreaseProductAmount(e, input);
+        updateProductsAmounts(input);
+        console.log(input.value);
     })
 }
 
@@ -44,7 +53,6 @@ const fetchProductsAmounts = () => {
 
         keyupEventListener(section);
         buttonClickEventListener(section);
-
     })
 }
 
