@@ -8,7 +8,7 @@
 <body>
 
 <div class="container">
-    <div class="dinner-table">
+    <div class="dinner-table-container">
         <!--  Draw UI  -->
         <div class="sky-box">
 
@@ -20,16 +20,20 @@
     <!--    Spawn or delete products    -->
     <div class="ui-controllers">
         <section class="change-amount">
-            <button class="decrease"></button>
+            <button class="decrease">-</button>
             <input type="text" placeholder="0">
-            <button class="increase"></button>
-            <img src="" alt="Milk">
+            <button class="increase">+</button>
+            <div class="img-container">
+                <img src="assets/milk.png" height="50" alt="Milk">
+            </div>
         </section>
         <section class="change-amount">
-            <button class="decrease"></button>
+            <button class="decrease">-</button>
             <input type="text" placeholder="0">
-            <button class="increase"></button>
-            <img src="" alt="Cheese">
+            <button class="increase">+</button>
+            <div class="img-container">
+                <img src="assets/cheese.png" height="50" alt="Cheese">
+            </div>
         </section>
     </div>
 </div>

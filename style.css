@@ -4,10 +4,86 @@
     box-sizing: border-box;
 }
 
+input:focus {
+    outline: 1px solid lightgrey;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
 .container {
+    display:flex;
+    flex-direction: column;
+
     margin: 0 auto;
     max-width: 1440px;
     height: 100vh;
 
     background-color: #fcfcfc;
+}
+
+/* Dinner table UI styles */
+.dinner-table-container {
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+
+    border-bottom: 4px solid #101010;
+}
+
+.dinner-table-container .sky-box {
+    flex: 5;
+
+    background-color: lightskyblue;
+}
+
+.dinner-table-container .table {
+    display: flex;
+    flex: 1;
+
+    background-color: brown;
+}
+
+/* Dinner table UI controllers styles */
+.ui-controllers {
+    /* display: flex;*/
+    flex: 3;
+}
+
+section.change-amount {
+    display: flex;
+    margin: 20px;
+}
+
+section.change-amount button {
+    align-self: center;
+    width: 40px;
+    height: 40px;
+
+    color: white;
+    font-size: 25px;
+    background-color: #ffcd65;
+    border: none;
+}
+
+section.change-amount input {
+    align-self: center;
+    padding: 12px 4px;
+    margin: 10px;
+    border: 1px solid lightgray;
+    text-align: center;
+}
+
+section.change-amount .img-container {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+
+    align-self: center;
+    margin-left: 25px;
 }
