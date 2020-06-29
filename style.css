@@ -16,6 +16,10 @@ button:focus {
     outline: none;
 }
 
+img {
+    height: 50px;
+}
+
 .container {
     display:flex;
     flex-direction: column;
@@ -43,9 +47,7 @@ button:focus {
 }
 
 .dinner-table-container .table {
-    display: flex;
     flex: 1;
-
     background-color: brown;
 }
 
@@ -87,3 +89,4 @@ section.change-amount .img-container {
     align-self: center;
     margin-left: 25px;
 }
+

@@ -1,6 +1,25 @@
 let milkAmount = 0
 let cheeseAmount = 0
 
+const products = [];
+let productAmounts = [0, 0];
+
+/* Draw products, generate positions of products */
+const draw = (product) => {
+    const table = document.querySelector('.table');
+    table.innerHTML += `<img src="assets/${product}.png" id="${product}-image">`;
+}
+
+// Getting images and draw them when amount changes
+function drawImages() {
+    products.forEach(product => {
+        draw(product);
+    })
+}
+
+/* Working with DOM, getting milk amount and cheese amount from
+*  the input forms
+*  */
 const updateProductAmount = (input, productName) => {
     if (input.className === productName) {
         return input.value;
@@ -12,7 +31,6 @@ const updateProductsAmounts = (input) => {
     milkAmount = updateProductAmount(input, "milk")
 }
 
-
 function keyupEventListener(section) {
     section.addEventListener('keyup', () => {
         const input = section.querySelector('input');
@@ -21,9 +39,10 @@ function keyupEventListener(section) {
     })
 }
 
-function increaseProductAmount(e, input) {
+function increaseProductAmount(e, input, product) {
     if (e.target.className === 'increase') {
         ++input.value;
+        draw(input.className);
     }
 }
 
@@ -33,15 +52,15 @@ function decreaseProductAmount(e, input) {
     }
 }
 
-
 function buttonClickEventListener(section) {
     section.addEventListener('click', e => {
         const input = section.querySelector('input');
 
         increaseProductAmount(e, input);
         decreaseProductAmount(e, input);
+
         updateProductsAmounts(input);
-        console.log(input.value);
+
     })
 }
 
@@ -50,10 +69,11 @@ const fetchProductsAmounts = () => {
 
     const productSections = Array.from(container.children);
     productSections.forEach(section => {
-
         keyupEventListener(section);
         buttonClickEventListener(section);
     })
+    //drawImages()
 }
 
 fetchProductsAmounts();
+
