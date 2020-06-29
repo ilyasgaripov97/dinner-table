@@ -1,13 +1,30 @@
 let milkAmount = 0
 let cheeseAmount = 0
 
-const products = [];
-let productAmounts = [0, 0];
+const products = ['milk', 'cheese'];
 
 /* Draw products, generate positions of products */
 const draw = (product) => {
     const table = document.querySelector('.table');
     table.innerHTML += `<img src="assets/${product}.png" id="${product}-image">`;
+}
+
+const getProductAmountByName = (product) => {
+    for (let p of products) {
+        if (product === 'milk') {
+            return milkAmount;
+        } else if (product === 'cheese') {
+            return cheeseAmount;
+        }
+    }
+}
+
+const drawMultipleTimes = (product) => {
+    const productAmount = getProductAmountByName(product);
+    console.log(productAmount);
+    for (let i = 0; i < productAmount; ++i) {
+        draw(product);
+    }
 }
 
 // Getting images and draw them when amount changes
@@ -31,11 +48,15 @@ const updateProductsAmounts = (input) => {
     milkAmount = updateProductAmount(input, "milk")
 }
 
-function keyupEventListener(section) {
-    section.addEventListener('keyup', () => {
+function submitEventListener(section) {
+    section.addEventListener('submit', e => {
+        e.preventDefault();
+
         const input = section.querySelector('input');
         updateProductsAmounts(input);
+
         // use values of input fields for rendering a products on table
+        drawMultipleTimes(input.className);
     })
 }
 
@@ -69,7 +90,7 @@ const fetchProductsAmounts = () => {
 
     const productSections = Array.from(container.children);
     productSections.forEach(section => {
-        keyupEventListener(section);
+        submitEventListener(section);
         buttonClickEventListener(section);
     })
     //drawImages()
