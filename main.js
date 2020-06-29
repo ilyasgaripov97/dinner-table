@@ -27,13 +27,6 @@ const drawMultipleTimes = (product) => {
     }
 }
 
-// Getting images and draw them when amount changes
-function drawImages() {
-    products.forEach(product => {
-        draw(product);
-    })
-}
-
 /* Working with DOM, getting milk amount and cheese amount from
 *  the input forms
 *  */
@@ -63,11 +56,10 @@ function submitEventListener(section) {
 function increaseProductAmount(e, input, product) {
     if (e.target.className === 'increase') {
         ++input.value;
-        draw(input.className);
     }
 }
 
-function decreaseProductAmount(e, input) {
+    function decreaseProductAmount(e, input) {
     if (e.target.className === 'decrease'  && input.value > 0) {
         --input.value;
     }
@@ -81,7 +73,6 @@ function buttonClickEventListener(section) {
         decreaseProductAmount(e, input);
 
         updateProductsAmounts(input);
-
     })
 }
 
@@ -93,7 +84,6 @@ const fetchProductsAmounts = () => {
         submitEventListener(section);
         buttonClickEventListener(section);
     })
-    //drawImages()
 }
 
 fetchProductsAmounts();
